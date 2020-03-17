@@ -6,7 +6,7 @@
 /*   By: sassassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 17:05:52 by sassassi          #+#    #+#             */
-/*   Updated: 2020/03/16 21:34:13 by sassassi         ###   ########.fr       */
+/*   Updated: 2020/03/17 15:26:19 by sassassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_move_suite_elem(t_stack **top_a, t_stack **top_b, t_correct *cor, int fd)
 {
-	ft_printf("______________IN MOVE___________________\n");
+/*	ft_printf("______________IN MOVE___________________\n");
 	ft_print_stack(top_a);
 	ft_print_stack(top_b);
 	ft_printf("correction->sum = %d\nNOW GETCHAR\n", cor->sum);
 	ft_printf("ra = %d\nrb = %d\nrr = %d\nrra = %d\nrrb = %d\nrrr = %d\nsa = %d\nsb = %d\nss = %d\n\n", cor->ra, cor->rb, cor->rr, cor->rra, cor->rrb, cor->rrr, cor->sa, cor->sb, cor->ss);
 	getchar();
-	while (cor->ra > 0)
+*/	while (cor->ra > 0)
 	{
 		ft_ra_rb(top_a);
 		write(fd, "ra\n", 3);
@@ -58,9 +58,4 @@ void	ft_move_suite_elem(t_stack **top_a, t_stack **top_b, t_correct *cor, int fd
 	}
 	ft_pa(top_a, top_b);
 	write(fd, "pa\n", 3);
-	if (ft_gt(top_a, (*top_a)) == 1)
-	{
-		ft_ra_rb(top_a);
-		write(fd, "ra\n", 3);
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: sassassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/12 11:49:06 by sassassi          #+#    #+#             */
-/*   Updated: 2020/02/17 18:39:33 by sassassi         ###   ########.fr       */
+/*   Updated: 2020/03/17 16:37:32 by sassassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 int			ft_val_instr(void)
 {
 	char	*line;
-	int		fd;
 
-	fd = open("instructions.txt", O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
-	if (fd == -1)
-		ft_printf("there are problems with instructions.txt (it can't be open)\n");
 	line = NULL;
 	while (get_next_line(0, &line) > 0)
 	{
@@ -34,17 +30,14 @@ int			ft_val_instr(void)
 		{
 			if (line != NULL)
 				ft_strdel(&line);
-			unlink("instructions.txt");
 			return (0);
 		}
-		if (line != NULL)
+/*		if (line != NULL)
 		{
-			write(fd, line, ft_strlen(line));
-			write(fd, "\n", 1);
+			write(0, line, ft_strlen(line));
+			write(0, "\n", 1);
 			ft_strdel(&line);
-		}
+		}*/
 	}
-	if (close(fd) == -1)
-		ft_printf("there are problems with closing instructions.txt\n");
 	return (1);
 }

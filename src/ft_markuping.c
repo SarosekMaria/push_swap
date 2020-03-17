@@ -6,7 +6,7 @@
 /*   By: sassassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 15:35:55 by sassassi          #+#    #+#             */
-/*   Updated: 2020/03/12 21:10:07 by sassassi         ###   ########.fr       */
+/*   Updated: 2020/03/17 15:25:52 by sassassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void		ft_markuping(t_stack **top, int (*mark_f)(t_stack **, t_stack *),
 	mark_f(top, help->markup_head);
 	help->count = max_count;
 //	ft_printf("markup_head->value = %d, help->count = %d\n", help->markup_head->value,  help->count);
-	tmp = *top;
+/*	tmp = *top;
 	while (tmp)
 	{
 		ft_printf("%d ---- %d\n", tmp->value, tmp->m);
 		tmp = tmp->next;
 	}
-	ft_printf("\n\n");
+	ft_printf("\n\n");*/
 }

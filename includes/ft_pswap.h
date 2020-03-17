@@ -6,7 +6,7 @@
 /*   By: sassassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 15:26:53 by sassassi          #+#    #+#             */
-/*   Updated: 2020/03/17 12:30:20 by sassassi         ###   ########.fr       */
+/*   Updated: 2020/03/17 16:22:05 by sassassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef	struct			s_help
 	t_stack				*markup_head;
 }						t_help;
 
+t_stack				*ft_min_stack_elem(t_stack **top);
 t_stack				*ft_add_elem(t_stack **top, int value);
 t_stack				*ft_get_bottom(t_stack **top);
 t_stack				*ft_cpy_stack(t_stack **dst, t_stack **src);
@@ -59,6 +60,9 @@ t_correct			*ft_init_correct(void);
 t_correct			*ft_calc_op(t_stack **top_a, t_stack **top_b,
 		t_stack *elem_b, t_correct **top_correct);
 size_t				ft_stack_size(t_stack **top);
+t_correct			*ft_calc_all_variants(t_stack **top_a, t_stack **top_b, t_stack *elem_b, t_correct **top_correct);
+void				ft_print_instr(void);
+void				ft_stack_a_end(t_stack **top_a, int fd);
 void				ft_move_suite_elem(t_stack **top_a, t_stack **top_b,
 		t_correct *cor, int fd);
 void				ft_cpy_cor(t_correct **cor_min,

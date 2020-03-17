@@ -1,41 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_sort.c                                       :+:      :+:    :+:   */
+/*   ft_stack_a_end.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sassassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/15 19:33:21 by sassassi          #+#    #+#             */
-/*   Updated: 2020/03/17 16:16:09 by sassassi         ###   ########.fr       */
+/*   Created: 2020/03/17 15:14:41 by sassassi          #+#    #+#             */
+/*   Updated: 2020/03/17 15:24:03 by sassassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_pswap.h"
 
-void		ft_is_sort(t_stack **top_a, t_stack **top_b)
+void	ft_stack_a_end(t_stack **top_a, int fd)
 {
-	t_stack	*tmp_a;
-	
-	if (top_a != NULL)
+	int	min_elem_order;
+	int	size_a;
+
+	size_a = ft_stack_size(top_a);
+	min_elem_order = ft_order_num(top_a, ft_min_stack_elem(top_a));
+	if (min_elem_order <= size_a)
 	{
-		if (ft_stack_size(top_b) > 0)
+		while (ft_is_sort_pswap_asc(top_a, size_a) == 0)
 		{
-			write(1, "KO\n", 3);
-			ft_del_stack(top_b);
-			return ;
+			ft_ra_rb(top_a);
+			write(fd, "ra\n", 3);
 		}
-		tmp_a = *top_a;
-		while (tmp_a->next)
-		{
-			if (tmp_a->value >= (tmp_a->next)->value)
-			{
-				write(1, "KO\n", 3);
-				return ;
-			}
-			tmp_a = tmp_a->next;
-		}	
 	}
-	write(1, "OK\n", 3);
-	ft_del_stack(top_a);
-	ft_del_stack(top_b);
+	else
+	{
+		while (ft_is_sort_pswap_asc(top_a, size_a) == 0)
+		{
+			ft_rra_rrb(top_a);
+			write(fd, "rra\n", 3);
+		}
+	}
 }

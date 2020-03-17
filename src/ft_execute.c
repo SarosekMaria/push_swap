@@ -6,7 +6,7 @@
 /*   By: sassassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 19:04:11 by sassassi          #+#    #+#             */
-/*   Updated: 2020/02/26 09:31:55 by sassassi         ###   ########.fr       */
+/*   Updated: 2020/03/17 16:32:53 by sassassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int			ft_execute(t_stack **top_a)
 
 	line = NULL;
 	top_b = NULL;
-	fd = open("instructions.txt", O_RDONLY);
-	if (fd < 0)
-		ft_printf("we fucked up with opening instructions.txt!:(\n");
+//	fd = open("instructions.txt", O_RDONLY);
+//	if (fd < 0)
+//		ft_printf("we fucked up with opening instructions.txt!:(\n");
+	fd = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
 		if (ft_strcmp(line, "sa") == 0)
@@ -52,9 +53,9 @@ int			ft_execute(t_stack **top_a)
 //		ft_print_stack(top_a);
 //		ft_print_stack(&top_b);
 	}
-	if (close (fd) < 0)
-		ft_printf("we fucked up with closing instructions.txt!:(\n");
-	unlink("instructions.txt");
+//	if (close (fd) < 0)
+//		ft_printf("we fucked up with closing instructions.txt!:(\n");
+//	unlink("instructions.txt");
 //	ft_print_stack(top_a);
 	ft_is_sort(top_a, &top_b);
 	return (1);
