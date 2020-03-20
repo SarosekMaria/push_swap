@@ -93,11 +93,9 @@ void						ft_print_float(char conversion, t_struct *m)
 {
 	double					value_1;
 	long double				value_2;
-	char					*tmp;
 
 	if (m->precision >= 0)
 		m->precisionft = m->precision;
-	tmp = NULL;
 	value_1 = 0.0;
 	value_2 = 0.0;
 	m->conversion = conversion;

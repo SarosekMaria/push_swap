@@ -20,14 +20,19 @@ void	ft_last_val_c(t_stack *top_a)
 		ft_del_stack(&top_a);
 		return ;
 	}
-	if (!ft_val_instr())
+/*	if (!ft_val_instr())
+	{
+		write(2, "Error\n", 6);
+		ft_del_stack(&top_a);
+		return ;
+	}*/
+	if (ft_execute(&top_a) == -1)
 	{
 		write(2, "Error\n", 6);
 		ft_del_stack(&top_a);
 		return ;
 	}
-	ft_execute(&top_a);
-	ft_del_stack(&top_a);
+//	ft_del_stack(&top_a);
 }
 
 void		ft_split_val_c(char *s, t_stack *top_a)

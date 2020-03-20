@@ -32,7 +32,7 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	if ((i > 25 && flag == 1) || (nb < 0 && nb != -2147483648)
-			|| nb < -2147483648 || (nb < 0 && flag == 1))
+			|| (nb < 0 && flag == 1))
 		return (-1);
 	if (i > 19 && flag == -1)
 		return (0);

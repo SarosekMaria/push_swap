@@ -15,14 +15,8 @@
 void	ft_define_format(char *int_part, char *frac_part, t_struct *m, int exp)
 {
 	int	len_ip;
-	int	len_fp;
-	int	i;
-	int	flag;
 
-	flag = 0;
-	i = 0;
 	len_ip = ft_strlen(int_part);
-	len_fp = ft_strlen(frac_part);
 	exp = len_ip - 1;
 	if (exp < -4 || exp >= m->precision)
 	{

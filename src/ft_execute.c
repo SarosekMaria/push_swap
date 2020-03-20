@@ -26,6 +26,8 @@ int			ft_execute(t_stack **top_a)
 	fd = 0;
 	while (get_next_line(fd, &line) > 0)
 	{
+		if (!ft_val_instr(line))
+			return (-1);
 		if (ft_strcmp(line, "sa") == 0)
 			ft_sa_sb(top_a);
 		else if (ft_strcmp(line, "sb") == 0)

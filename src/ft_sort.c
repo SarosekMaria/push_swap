@@ -30,9 +30,7 @@ int			ft_need_sa(t_stack **top_a, t_help *help,
 		int (*mark_f)(t_stack**, t_stack*))
 {
 	int		count;
-	t_stack	*tmp;
 
-	tmp = *top_a;
 	count = 0;
 //ft_printf("before: top = %d, top->next = %d, top->m = %d\n", (*top_a)->value, (*top_a)->next->value, (*top_a)->m);
 	ft_sa_sb(top_a);

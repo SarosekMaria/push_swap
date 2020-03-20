@@ -21,9 +21,6 @@ void		ft_last_val(t_stack *top_a)
 		return ;
 	}
 	ft_creating_instr(&top_a);
-//ft_printf("**********************SPLIT***********************\n");
-//ft_print_stack(&top_a);
-//ft_printf("**************************************************\n");		
 	ft_del_stack(&top_a);
 }
 

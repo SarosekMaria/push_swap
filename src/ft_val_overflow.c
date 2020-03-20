@@ -14,12 +14,10 @@
 
 int		ft_val_overflow(char *s)
 {
-	int	i;
 	int	size;
 	int	nb;
 
 	nb = ft_atoi(s);
-	i = 0;
 	size = ft_strlen(s);
 	if (nb == -1 && size != 2)
 		return (0);

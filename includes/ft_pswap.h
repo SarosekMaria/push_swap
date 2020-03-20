@@ -107,7 +107,7 @@ int					ft_is_sort_pswap_asc(t_stack **top, size_t size);
 int					ft_is_sort_pswap_asc(t_stack **top, size_t size);
 int					ft_is_sort_pswap_asc(t_stack **top, size_t size);
 int					ft_val_dig(char *s);
-int					ft_val_instr(void);
+int					ft_val_instr(char *s);
 int					ft_printf(const char *format, ...);
 int					get_next_line(const int fd, char **line);
 int					ft_val_duplicates(t_stack **top);
