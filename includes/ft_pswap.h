@@ -42,7 +42,7 @@ typedef struct			s_correct
 	int					sb;
 	int					ss;
 	int					sum;
-	struct s_correct	*next;
+	struct s_correct			*next;
 }						t_correct;
 
 typedef	struct			s_help
@@ -61,6 +61,7 @@ t_correct			*ft_calc_op(t_stack **top_a, t_stack **top_b,
 		t_stack *elem_b, t_correct **top_correct);
 size_t				ft_stack_size(t_stack **top);
 t_correct			*ft_calc_all_variants(t_stack **top_a, t_stack **top_b, t_stack *elem_b, t_correct **top_correct);
+void				ft_visualize(t_stack **top_a, t_stack **top_b, char *line);
 void				ft_print_instr(void);
 void				ft_stack_a_end(t_stack **top_a, int fd);
 void				ft_move_suite_elem(t_stack **top_a, t_stack **top_b,
@@ -111,7 +112,7 @@ int					ft_val_instr(char *s);
 int					ft_printf(const char *format, ...);
 int					get_next_line(const int fd, char **line);
 int					ft_val_duplicates(t_stack **top);
-int					ft_execute(t_stack **top_a);
+int					ft_execute(t_stack **top_a, int v);
 int					push_swap(int argc, char **argv);
 int					checker(int argc, char **argv);
 int					ft_is_sort_pswap_asc(t_stack **top, size_t size);

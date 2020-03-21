@@ -12,19 +12,14 @@
 
 #include "../includes/ft_pswap.h"
 
-int			ft_execute(t_stack **top_a)
+int			ft_execute(t_stack **top_a, int v)
 {
-	int		fd;
-	char	*line;
-	t_stack	*top_b;
+	char		*line;
+	t_stack		*top_b;
 
 	line = NULL;
 	top_b = NULL;
-//	fd = open("instructions.txt", O_RDONLY);
-//	if (fd < 0)
-//		ft_printf("we fucked up with opening instructions.txt!:(\n");
-	fd = 0;
-	while (get_next_line(fd, &line) > 0)
+	while (get_next_line(0, &line) > 0)
 	{
 		if (!ft_val_instr(line))
 			return (-1);
@@ -50,15 +45,14 @@ int			ft_execute(t_stack **top_a)
 			ft_rra_rrb(&top_b);
 		else if (ft_strcmp(line, "rrr") == 0)
 			ft_rrr(top_a, &top_b);
+//for visualising
+		if (v == 1)
+			ft_visualize(top_a, &top_b, line);
+
+//end visualizing
 		if (line != NULL)
 			ft_strdel(&line);
-//		ft_print_stack(top_a);
-//		ft_print_stack(&top_b);
 	}
-//	if (close (fd) < 0)
-//		ft_printf("we fucked up with closing instructions.txt!:(\n");
-//	unlink("instructions.txt");
-//	ft_print_stack(top_a);
 	ft_is_sort(top_a, &top_b);
 	return (1);
 }
