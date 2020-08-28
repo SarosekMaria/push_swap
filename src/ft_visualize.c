@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/ft_pswap.h"
 
 void		ft_visualize(t_stack **top_a, t_stack **top_b, char *line)
@@ -20,8 +19,8 @@ void		ft_visualize(t_stack **top_a, t_stack **top_b, char *line)
 
 	tmp_a = *top_a;
 	tmp_b = *top_b;
-	ft_printf("Operation: %s\n", line);
-	ft_printf("***************STACK_A*************|***************STACK_B*****************\n");
+	ft_printf("Operation: %s\n***************STACK_A*************|", line);
+	ft_printf("***************STACK_B*****************\n");
 	while (tmp_a || tmp_b)
 	{
 		if (tmp_a)
@@ -38,6 +37,6 @@ void		ft_visualize(t_stack **top_a, t_stack **top_b, char *line)
 			ft_printf("                                      |");
 		ft_printf("\n");
 	}
-	ft_printf("***********************************|***************************************\n");
-	ft_printf("\n");
+	ft_printf("***********************************|");
+	ft_printf("***************************************\n\n");
 }

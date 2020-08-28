@@ -12,7 +12,15 @@
 
 #include "../includes/ft_pswap.h"
 
-int		ft_val_dig(char *s)
+static int	ft_char(char c)
+{
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' ||
+		c == '\r' || c == ' ')
+		return (1);
+	return (0);
+}
+
+int			ft_val_dig(char *s)
 {
 	int	i;
 	int	i_d;
@@ -21,8 +29,7 @@ int		ft_val_dig(char *s)
 	i_first_dig = -1;
 	i = 0;
 	i_d = 0;
-	while (s[i] == '\t' || s[i] == '\n' || s[i] == '\v' || s[i] == '\f' ||
-			s[i] == '\r' || s[i] == ' ')
+	while (ft_char(s[i]) == 1)
 		i++;
 	while (s[i])
 	{
@@ -33,7 +40,7 @@ int		ft_val_dig(char *s)
 			i_d++;
 		}
 		else if (!((s[i] == '+' || s[i] == '-') &&
-					(i_first_dig > i || i_first_dig == -1)) || (i_d > 10))
+			(i_first_dig > i || i_first_dig == -1)) || (i_d > 10))
 			return (0);
 		i++;
 	}

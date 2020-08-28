@@ -21,9 +21,6 @@
 # define MIN_INT -2147483648
 # define MAX_SIZE_T 18446744073709551615
 
-# define uintmax_t unsigned long int
-# define intmax_t long int
-
 size_t				ft_strlen(const char *s);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 int					ft_isalpha(int c);

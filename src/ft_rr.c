@@ -6,11 +6,11 @@
 /*   By: sassassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:33:04 by sassassi          #+#    #+#             */
-/*   Updated: 2020/01/24 17:40:51 by sassassi         ###   ########.fr       */
+/*   Updated: 2020/07/28 19:37:39 by sassassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_pswap.h"
+#include "../includes/ft_pswap.h"
 
 void	ft_rr(t_stack **top_a, t_stack **top_b)
 {

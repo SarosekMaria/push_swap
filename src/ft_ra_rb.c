@@ -6,11 +6,11 @@
 /*   By: sassassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 17:33:19 by sassassi          #+#    #+#             */
-/*   Updated: 2020/03/05 21:50:42 by sassassi         ###   ########.fr       */
+/*   Updated: 2020/07/29 15:08:33 by sassassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_pswap.h"
+#include "../includes/ft_pswap.h"
 
 void		ft_ra_rb(t_stack **top)
 {
@@ -22,10 +22,10 @@ void		ft_ra_rb(t_stack **top)
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = *top;
-		(*top)->prev = tmp;//
+		(*top)->prev = tmp;
 		tmp = *top;
 		*top = (*top)->next;
 		tmp->next = NULL;
-		(*top)->prev = NULL;//
+		(*top)->prev = NULL;
 	}
 }

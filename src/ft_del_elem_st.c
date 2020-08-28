@@ -16,7 +16,7 @@ void	ft_del_elem_st(t_stack **elem)
 {
 	if (elem != NULL)
 	{
-		free (*elem);
+		free(*elem);
 		*elem = NULL;
 	}
 }

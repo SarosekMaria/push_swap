@@ -17,20 +17,10 @@ void		ft_indexing(t_stack **top)
 	t_stack	*tmp;
 	int		*m;
 	size_t	i;
-	
+
 	if (top != NULL && *top != NULL)
 	{
 		m = ft_init_mas(top, ft_stack_size(top));
-
-/*ft_printf("mas:\n");
-i = 0;
-while (i < ft_stack_size(top))
-{
-	ft_printf("%d ", m[i]);
-	i++;
-}
-ft_printf("\n");*/
-
 		tmp = *top;
 		while (tmp)
 		{

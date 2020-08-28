@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_check_space_empty.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sassassi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 17:46:12 by sassassi          #+#    #+#             */
-/*   Updated: 2019/09/15 17:48:10 by sassassi         ###   ########.fr       */
+/*   Created: 2020/07/28 15:12:29 by sassassi          #+#    #+#             */
+/*   Updated: 2020/07/28 16:23:32 by sassassi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/ft_pswap.h"
 
-t_list		*ft_lstlast(t_list *begin_list)
+int			ft_check_space_empty(char *s)
 {
-	t_list	*tmp;
+	int		i;
+	size_t	spaces;
 
-	if (begin_list == NULL)
-		return (NULL);
-	tmp = begin_list;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
-	return (tmp);
+	i = 0;
+	spaces = 0;
+	while (s[i])
+	{
+		if (s[i] == ' ')
+			spaces++;
+		i++;
+	}
+	i = 0;
+	while (s[i])
+		i++;
+	if ((i == 1 && s[0] == ' ') || spaces == ft_strlen(s))
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	if (i == 0)
+		return (1);
+	return (0);
 }

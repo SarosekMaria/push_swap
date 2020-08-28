@@ -14,8 +14,9 @@
 
 int			ft_order_num(t_stack **top, t_stack *elem)
 {
-	int		order_num;
-	t_stack	*tmp;
+	int			order_num;
+	t_stack		*tmp;
+
 	order_num = 0;
 	if (top && *top)
 	{

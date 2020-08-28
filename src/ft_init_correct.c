@@ -35,7 +35,7 @@ void			ft_reinit_correct(t_correct **top_cor)
 
 t_correct		*ft_init_correct(void)
 {
-	t_correct   *cor;
+	t_correct	*cor;
 
 	cor = (t_correct*)malloc(sizeof(t_correct) * 1);
 	if (!cor)

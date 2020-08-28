@@ -12,11 +12,29 @@
 
 #include "../includes/ft_pswap.h"
 
-t_correct		*ft_calc_all_variants(t_stack **top_a, t_stack **top_b, t_stack *elem_b, t_correct **top_correct)
+static void		ft_calc_sum(t_correct **top_correct,
+			t_correct **current_cor)
 {
 	t_correct	*tmp;
-	t_correct	*current_cor;
 	int			min;
+
+	min = (*current_cor)->sum;
+	tmp = *top_correct;
+	while (tmp)
+	{
+		if (tmp->sum < min)
+		{
+			*current_cor = tmp;
+			min = tmp->sum;
+		}
+		tmp = tmp->next;
+	}
+}
+
+t_correct		*ft_calc_variants(t_stack **top_a, t_stack **top_b,
+			t_stack *elem_b, t_correct **top_correct)
+{
+	t_correct	*current_cor;
 	int			suite_a;
 	int			suite_b;
 
@@ -33,33 +51,19 @@ t_correct		*ft_calc_all_variants(t_stack **top_a, t_stack **top_b, t_stack *elem
 	current_cor = current_cor->next;
 	ft_bd_ad(ft_stack_size(top_a) - suite_a,
 			ft_stack_size(top_b) - suite_b, current_cor);
-	min = current_cor->sum;
-	tmp = *top_correct;
-//	ft_printf("for element %d in b sums are:\n", elem_b->value);
-	while (tmp)
-	{
-//		ft_printf("sum = %d\n", tmp->sum);
-		if (tmp->sum < min)
-		{
-			current_cor = tmp;
-			min = tmp->sum;
-		}
-		tmp = tmp->next;
-	}
+	ft_calc_sum(top_correct, &current_cor);
 	return (current_cor);
 }
 
-t_correct			*ft_calc_op(t_stack **top_a, t_stack **top_b, t_stack *elem_b, t_correct **top_correct)
+t_correct		*ft_calc_op(t_stack **top_a, t_stack **top_b,
+			t_stack *elem_b, t_correct **top_correct)
 {
-	int			min;
 	int			suite_a;
 	int			suite_b;
 	t_correct	*current_cor;
-	t_correct	*tmp;
 
 	suite_a = ft_find_suite_pair(top_a, elem_b);
 	suite_b = ft_order_num(top_b, elem_b);
-//ft_printf("suite_a = %d, suite_b = %d\n", suite_a, suite_b);
 	current_cor = *top_correct;
 	ft_bu_au(suite_a, suite_b, current_cor);
 	current_cor = current_cor->next;
@@ -71,45 +75,28 @@ t_correct			*ft_calc_op(t_stack **top_a, t_stack **top_b, t_stack *elem_b, t_cor
 	current_cor = current_cor->next;
 	ft_bd_ad(ft_stack_size(top_a) - suite_a,
 			ft_stack_size(top_b) - suite_b, current_cor);
-	min = current_cor->sum;
-	tmp = *top_correct;
-//	ft_printf("for element %d in b sums are:\n", elem_b->value);
-	while (tmp)
-	{
-//		ft_printf("sum = %d\n", tmp->sum);
-		if (tmp->sum < min)
-		{
-			current_cor = tmp;
-			min = tmp->sum;
-		}
-		tmp = tmp->next;
-	}
+	ft_calc_sum(top_correct, &current_cor);
 	return (current_cor);
 }
 
-void			ft_find_suite_elem(t_stack **top_a, t_stack **top_b, t_correct **top_correct, t_correct **cor_min)
+void			ft_find_suite_elem(t_stack **top_a, t_stack **top_b,
+t_correct **top_cor, t_correct **cor_min)
 {
 	t_stack		*tmp;
-	t_correct	*current_min;
+	t_correct	*cur_min;
 
-	current_min = *top_correct;
+	cur_min = *top_cor;
 	(*cor_min)->sum = ft_stack_size(top_a) + ft_stack_size(top_b);
 	tmp = *top_b;
 	while (tmp)
 	{
-//ft_printf("In ft_find_suite_elem: tmp->value = %d\n", tmp->value);
 		if (ft_gt(top_a, tmp) == 1)
-		{
-//ft_printf("ft_gt!!!ft_order_num(top_b, tmp) = %d\n", ft_order_num(top_b, tmp));
-			current_min = ft_calc_all_variants(top_a, top_b, tmp, top_correct);
-		}
+			cur_min = ft_calc_variants(top_a, top_b, tmp, top_cor);
 		else
-			current_min = ft_calc_op(top_a, top_b, tmp, top_correct);
-		if (current_min->sum < (*cor_min)->sum)
-			ft_cpy_cor(cor_min, current_min);
-//ft_printf("current sum = %d, cor_min->sum = %d,NOW WOULD BE GETCHAR\n", current_min->sum, (*cor_min)->sum);
-//getchar();
-		ft_reinit_correct(top_correct);
+			cur_min = ft_calc_op(top_a, top_b, tmp, top_cor);
+		if (cur_min->sum < (*cor_min)->sum)
+			ft_cpy_cor(cor_min, cur_min);
+		ft_reinit_correct(top_cor);
 		tmp = tmp->next;
 	}
 }

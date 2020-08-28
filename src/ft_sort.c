@@ -32,13 +32,10 @@ int			ft_need_sa(t_stack **top_a, t_help *help,
 	int		count;
 
 	count = 0;
-//ft_printf("before: top = %d, top->next = %d, top->m = %d\n", (*top_a)->value, (*top_a)->next->value, (*top_a)->m);
 	ft_sa_sb(top_a);
 	count = mark_f(top_a, help->markup_head);
-//ft_printf("count = %d, max_count = %d\n", count, help->count);
 	ft_sa_sb(top_a);
 	mark_f(top_a, help->markup_head);
-//ft_printf("after: top = %d, top->next = %d, top->m = %d\n", (*top_a)->value, (*top_a)->next->value, (*top_a)->m);
 	if (count > help->count)
 	{
 		help->count = count;
@@ -51,13 +48,10 @@ void		ft_sort(t_stack **top_a, t_stack **top_b,
 		int (*mark_f)(t_stack**, t_stack*), t_help *help)
 {
 	t_stack	*tmp;
+
 	tmp = *top_a;
 	while (tmp)
-	{
-//		ft_printf("%d ---- %d\n", tmp->value, tmp->m);
 		tmp = tmp->next;
-	}
-
 	while (ft_need_pushb(top_a) == 1)
 	{
 		if (ft_need_sa(top_a, help, mark_f) == 1)
@@ -77,5 +71,5 @@ void		ft_sort(t_stack **top_a, t_stack **top_b,
 			write(help->fd, "ra\n", 3);
 		}
 	}
-	ft_solve_b(top_a, top_b, help->fd);//вот здесь можно передавать полностью help, чтобы использовать как-то его свободные поля
+	ft_solve_b(top_a, top_b, help->fd);
 }

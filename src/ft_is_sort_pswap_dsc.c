@@ -12,10 +12,10 @@
 
 #include "../includes/ft_pswap.h"
 
-int			ft_is_sort_pswap_dsc(t_stack **top, size_t size)
+int		ft_is_sort_pswap_dsc(t_stack **top, size_t size)
 {
 	t_stack	*tmp;
-//ft_printf("ft_stack_size = %d, size = %d\n", ft_stack_size(top), size);
+
 	if (top != NULL && size)
 	{
 		tmp = *top;

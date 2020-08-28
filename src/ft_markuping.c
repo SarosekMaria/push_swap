@@ -31,17 +31,8 @@ void		ft_markuping(t_stack **top, int (*mark_f)(t_stack **, t_stack *),
 			max_count = count;
 			help->markup_head = tmp;
 		}
-//ft_printf("tmp->value = %d, count = %d, tmp->i = %d, max_count = %d\n", tmp->value, count, tmp->i, max_count);
 		tmp = tmp->next;
 	}
 	mark_f(top, help->markup_head);
 	help->count = max_count;
-//	ft_printf("markup_head->value = %d, help->count = %d\n", help->markup_head->value,  help->count);
-/*	tmp = *top;
-	while (tmp)
-	{
-		ft_printf("%d ---- %d\n", tmp->value, tmp->m);
-		tmp = tmp->next;
-	}
-	ft_printf("\n\n");*/
 }

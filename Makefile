@@ -6,40 +6,90 @@
 #    By: sassassi <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/12 14:24:17 by sassassi          #+#    #+#              #
-#    Updated: 2020/03/17 15:54:36 by sassassi         ###   ########.fr        #
+#    Updated: 2020/07/28 20:49:19 by sassassi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 NAME_CHECKER = checker
 NAME_PUSHSWAP = push_swap
-SRC = src/ft_visualize.c src/ft_stack_a_end.c src/ft_min_stack_elem.c src/ft_gt.c src/ft_cpy_cor.c src/ft_init_correct.c src/ft_move_suite_elem.c src/ft_order_num.c src/ft_find_suite_elem.c src/ft_find_suite_pair.c src/ft_solve_b.c src/ft_three_elem_sort_a.c src/ft_index_markup.c src/ft_gt_markup.c src/ft_indexing.c src/ft_cpy_stack.c src/ft_markuping.c src/ft_val_overflow.c src/ft_add_elem.c src/ft_val_dig.c src/ft_val_instr.c src/ft_print_stack.c src/get_next_line.c src/ft_del_stack.c src/ft_del_elem_st.c src/ft_val_duplicates.c src/ft_execute.c src/ft_pa.c src/ft_pb.c src/ft_ra_rb.c src/ft_rr.c src/ft_rra_rrb.c src/ft_rrr.c src/ft_sa_sb.c src/ft_ss.c src/ft_stack_size.c src/ft_is_sort.c src/ft_creating_instr.c src/ft_init_mas.c src/ft_sort.c src/ft_get_bottom.c src/ft_is_sort_pswap_asc.c src/ft_is_sort_pswap_dsc.c src/ft_get_minval_index.c
-OBJ = ft_visualize.o ft_stack_a_end.o ft_min_stack_elem.o ft_gt.o ft_cpy_cor.o ft_init_correct.o ft_move_suite_elem.o ft_order_num.o ft_find_suite_elem.o ft_find_suite_pair.o ft_solve_b.o ft_three_elem_sort_a.o ft_index_markup.o ft_gt_markup.o ft_indexing.o ft_cpy_stack.o ft_markuping.o ft_val_overflow.o ft_add_elem.o ft_val_dig.o ft_val_instr.o ft_print_stack.o get_next_line.o ft_del_stack.o ft_del_elem_st.o ft_val_duplicates.o ft_execute.o ft_pa.o ft_pb.o ft_ra_rb.o ft_rr.o ft_rra_rrb.o ft_rrr.o ft_sa_sb.o ft_ss.o ft_stack_size.o ft_is_sort.o ft_creating_instr.o ft_init_mas.o ft_sort.o ft_get_bottom.o ft_is_sort_pswap_asc.o ft_is_sort_pswap_dsc.o ft_get_minval_index.o
+SRC_NAME = ft_check_space_empty.c\
+		   ft_free_argv.c\
+		   ft_visualize.c\
+		   ft_stack_a_end.c\
+		   ft_min_stack_elem.c\
+		   ft_gt.c\
+		   ft_cpy_cor.c\
+		   ft_init_correct.c\
+		   ft_move_suite_elem.c\
+		   ft_order_num.c\
+		   ft_find_suite_elem.c\
+		   ft_find_suite_pair.c\
+		   ft_solve_b.c\
+		   ft_three_elem_sort_a.c\
+		   ft_index_markup.c\
+		   ft_gt_markup.c\
+		   ft_indexing.c\
+		   ft_cpy_stack.c\
+		   ft_markuping.c\
+		   ft_val_overflow.c\
+		   ft_add_elem.c\
+		   ft_val_dig.c\
+		   ft_val_instr.c\
+		   ft_print_stack.c\
+		   ft_del_stack.c\
+		   ft_del_elem_st.c\
+		   ft_val_duplicates.c\
+		   ft_execute.c\
+		   ft_pa.c\
+		   ft_pb.c\
+		   ft_ra_rb.c\
+		   ft_rr.c\
+		   ft_rra_rrb.c\
+		   ft_rrr.c\
+		   ft_sa_sb.c\
+		   ft_ss.c\
+		   ft_stack_size.c\
+		   ft_is_sort.c\
+		   ft_creating_instr.c\
+		   ft_init_mas.c\
+		   ft_sort.c\
+		   ft_get_bottom.c\
+		   ft_is_sort_pswap_asc.c\
+		   ft_is_sort_pswap_dsc.c\
+		   ft_get_minval_index.c\
+		   get_next_line.c
+OBJ_NAME = $(SRC_NAME:%.c=%.o)
+OBJ_DIR = obj/
+OBJ = $(addprefix $(OBJ_DIR), $(OBJ_NAME))
+INC_DIR = inludes/
+INC = -I $(INC_DIR)
+LIB_DIR = src/ft_printf
+SRC_DIR = src/
 
-INC = includes
+all: $(NAME_PUSHSWAP)
 
-all: PROG_BUILD
+$(NAME_PUSHSWAP): $(OBJ)
+	@make -C $(LIB_DIR)
+	@$(CC) $(CFLAGS) -o $(NAME_PUSHSWAP) $(OBJ) obj/push_swap.o obj/main_pswap.o -L./src/ft_printf -lftprintf -g
+	@$(CC) $(CFLAGS) -o $(NAME_CHECKER) $(OBJ) obj/checker.o obj/main_checker.o -L./src/ft_printf -lftprintf -g
 
-PROG_BUILD:
-	@rm -rf obj
-	@rm -rf src/ft_printf/obj
-	@mkdir obj
-	@mkdir src/ft_printf/obj
-	@make -C src/ft_printf/
-	@gcc -Wall -Wextra -Werror -c $(SRC) src/push_swap.c src/main_pswap.c -I $(INC) -g
-	@gcc -Wall -Wextra -Werror -o $(NAME_PUSHSWAP) $(OBJ) push_swap.o main_pswap.o -L./src/ft_printf -lftprintf -g
-	@gcc -Wall -Wextra -Werror -c $(SRC) src/checker.c src/main_checker.c -I $(INC) -g
-	@gcc -Wall -Wextra -Werror -o $(NAME_CHECKER) $(OBJ) checker.o main_checker.o -L./src/ft_printf -lftprintf -g
-	@mv *.o ./obj/
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
+	@$(CC) $(CFLAGS) -o $@ -c $< $(INC)
+	@$(CC) $(CFLAGS) -o obj/push_swap.o -c src/push_swap.c $(INC)
+	@$(CC) $(CFLAGS) -o obj/main_pswap.o -c src/main_pswap.c $(INC)
+	@$(CC) $(CFLAGS) -o obj/checker.o -c src/checker.c $(INC)
+	@$(CC) $(CFLAGS) -o obj/main_checker.o -c src/main_checker.c $(INC)
 
 clean:
-	@/bin/rm -f ./obj/*.o
-	@/bin/rm -f ./src/ft_printf/obj/*.o
+	@make -C $(LIB_DIR) clean
+	@/bin/rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@/bin/rm -f $(NAME_CHECKER)
 	@/bin/rm -f $(NAME_PUSHSWAP)
-	@make -C src/ft_printf/ fclean
-	@rm -rf obj
-	@rm -rf src/ft_printf/obj
+	@make -C $(LIB_DIR) fclean
 
 re: fclean all
